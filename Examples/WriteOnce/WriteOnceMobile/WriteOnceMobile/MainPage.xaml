@@ -5,15 +5,34 @@
              x:Class="WriteOnceMobile.MainPage">
 
     <StackLayout 
-        HorizontalOptions="Center" 
-        VerticalOptions="Center">
+        HorizontalOptions="FillAndExpand" 
+        VerticalOptions="FillAndExpand"
+        Orientation="Vertical"
+        Spacing="15"
+        >
 
         <!-- TODO: 04 - Place new controls here -->
         <Label
-            Text="Welcome to WriteOnce (UI Version)!"
+            Text="Enter a phone word:"
             VerticalTextAlignment="Center">
         </Label>
-       
+        <Entry
+            x:Name="textToNumber"
+            Text="1-407-WDISNEY">
+        </Entry>
+        <Button
+            x:Name="translateButton"
+            Text="Translate"
+            Clicked="TranslateButton_Clicked"
+            >
+        </Button>
+        <Button
+            x:Name="callButton"
+            IsEnabled="False"
+            Text="Call"
+            Clicked="CallButton_Clicked"
+            >
+        </Button>
 
     </StackLayout>
 
