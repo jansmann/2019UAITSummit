@@ -24,6 +24,7 @@ namespace WriteOnceMobile
             //  called it "MainPage" but you can specify object of type ContentPage.
             //  If necessary, this call may be overridden and a code-derived view could be passed in.     
 
+            //  TODO: 03 - Return to original call for Main Page.
             //  Let's create a basic stack layout to house some UI Controls.
             var layout = new StackLayout
             {
