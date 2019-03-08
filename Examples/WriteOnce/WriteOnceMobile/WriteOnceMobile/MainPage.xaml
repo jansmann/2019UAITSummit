@@ -4,11 +4,22 @@
              xmlns:local="clr-namespace:WriteOnceMobile"
              x:Class="WriteOnceMobile.MainPage">
 
-    <StackLayout>
+    <StackLayout 
+        HorizontalOptions="Center" 
+        VerticalOptions="Center">
+
         <!-- TODO: 03 - Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <Label
+            Text="Welcome to WriteOnce (UI Version)!"
+            VerticalTextAlignment="Center">
+        </Label>
+        <Button
+             x:Name="ClickMeButton"
+             Text="Click Me (UI Version)"
+             Clicked="Handle_Clicked"
+            >
+        </Button>
+
     </StackLayout>
 
 </ContentPage>
