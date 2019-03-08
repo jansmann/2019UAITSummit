@@ -14,14 +14,6 @@ namespace WriteOnceMobile
             InitializeComponent();
         }
 
-        /// <summary>
-        /// This method will take care of the click event for the button on the page.
-        /// </summary>
-        /// <param name="sender">Sender.</param>
-        /// <param name="e">E.</param>
-        async void Handle_Clicked(object sender, System.EventArgs e)
-        {
-            await DisplayAlert("Alert", "You clicked me", "OK");
-        }
+        //  TODO: 04: Code to handle user interaction goes here!
     }
 }

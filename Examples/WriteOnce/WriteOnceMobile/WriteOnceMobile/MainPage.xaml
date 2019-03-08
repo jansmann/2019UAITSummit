@@ -8,17 +8,12 @@
         HorizontalOptions="Center" 
         VerticalOptions="Center">
 
-        <!-- TODO: 03 - Place new controls here -->
+        <!-- TODO: 04 - Place new controls here -->
         <Label
             Text="Welcome to WriteOnce (UI Version)!"
             VerticalTextAlignment="Center">
         </Label>
-        <Button
-             x:Name="ClickMeButton"
-             Text="Click Me (UI Version)"
-             Clicked="Handle_Clicked"
-            >
-        </Button>
+       
 
     </StackLayout>
 
