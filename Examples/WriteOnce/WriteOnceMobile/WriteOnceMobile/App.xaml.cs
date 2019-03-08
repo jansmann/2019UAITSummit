@@ -22,10 +22,45 @@ namespace WriteOnceMobile
 
             //  Load and launch the main page of this application.  We've conveniently
             //  called it "MainPage" but you can specify object of type ContentPage.
-            //  If necessary, this call may be overridden and a code-derived view could be passed in.
+            //  If necessary, this call may be overridden and a code-derived view could be passed in.     
 
-            //  TODO: 02-Add a button in code here.
-            MainPage = new MainPage();
+            //  Let's create a basic stack layout to house some UI Controls.
+            var layout = new StackLayout
+            {
+                VerticalOptions = LayoutOptions.Center, //   Placement on the vertical plane, scaled for the device.
+                Children =
+                {
+                    new Label
+                    {
+                       HorizontalTextAlignment = TextAlignment.Center,
+                       Text = "Welcome to WriteOnce!"
+                    }
+                }
+            };
+
+            //  Override the main page layout and add this new one.
+            MainPage = new ContentPage
+            {
+                Content = layout
+            };
+
+            //
+            //  Let's create a classy button...
+            Button button = new Button
+            {
+                Text = "Click Me"
+            };
+
+            //  ...and wire up an event to handle the click...
+            button.Clicked += async (s, e) => {
+                await MainPage.DisplayAlert("Alert", "You clicked me", "OK");
+            };
+
+
+            //  ...and add this item to the layout.
+            layout.Children.Add(button);
+
+            //
         }
 
         protected override void OnStart()
