@@ -1,8 +1,11 @@
 ﻿using Microsoft.Phone.Tasks;
-using Phoneword.WinPhone;
 
-namespace Phoneword.WinPhone
+namespace WriteOnceMobile.WinPhone
 {
+    /// <summary>
+    /// This helper class includes goodies that will perform platform-specific
+    /// operations on Windows Mobile.  Interface needs to be defined in the shared class.
+    /// </summary>
     public class PhoneDialer : IDialer
     {
         public bool Dial(string number)

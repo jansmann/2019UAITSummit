@@ -5,8 +5,13 @@ using Xamarin.Forms;
 
 using Uri = Android.Net.Uri;
 
-namespace Phoneword.Android
+namespace WriteOnceMobile.Droid
 {
+
+    /// <summary>
+    /// This helper class includes goodies that will perform platform-specific
+    /// operations on Android.  Interface needs to be defined in the shared class.
+    /// </summary>
     public class PhoneDialer : IDialer
     {
     	/// <summary>
