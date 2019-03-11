@@ -5,6 +5,7 @@ using Xamarin.Forms;
 
 using Uri = Android.Net.Uri;
 using WriteOnceMobile.Droid;
+using Android;
 
 // This same attribute definition needs to go in each platform-specific file.
 [assembly: Dependency(typeof(PhoneDialer))]
@@ -17,25 +18,44 @@ namespace WriteOnceMobile.Droid
     /// </summary>
     public class PhoneDialer : IDialer
     {
-    	/// <summary>
-    	/// Dial the phone, Android Style!
-    	/// </summary>
-		public bool Dial(string number)
+        //  String for testing what permissions have been set.
+        private const string CallPhonePermission = Manifest.Permission.CallPhone;
+
+        /// <summary>
+        /// Dial the phone, Android Style!
+        /// </summary>
+        public bool Dial(string number)
 		{
             //  Shift to the correct Android application context (post Xamarin.Forms 2.5)
 			var context = Android.App.Application.Context;
 			if (context == null)
 				return false;
+                
+            //  As of API 23, must additionally check to see if permission has been granted.
+            if (context.CheckSelfPermission(CallPhonePermission) == Android.Content.PM.Permission.Granted)
+            {
 
-			var intent = new Intent(Intent.ActionCall);
-			intent.SetData(Uri.Parse("tel:" + number));
+                var intent = new Intent(Intent.ActionCall);
+                intent.SetData(Uri.Parse("tel:" + number));
 
-			if (IsIntentAvailable(context, intent)) {
-				context.StartActivity(intent);
-				return true;
-			}
-
-			return false;
+                if (IsIntentAvailable(context, intent))
+                {
+                    context.StartActivity(intent);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                //  Permission has not been granted, though the manifest should have requested it.  However, our simulators
+                //  don't always respond correctly to the manifest settings.  
+                //  In any case, we typically we would want to force a security prompt if this gets dropped to here, 
+                //  but for this example, will instead manually grant the app access on the simulator.
+                return false;
+            }
 		}
 
         /// <summary>
