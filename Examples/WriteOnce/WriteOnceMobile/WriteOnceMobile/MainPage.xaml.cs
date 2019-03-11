@@ -68,14 +68,30 @@ namespace WriteOnceMobile
         }
 
         /// <summary>
-        /// To be enabled later.
+        /// Event handler that will trigger the correct "call" function for the
+        /// platform that the user is using (Droid, iOS, Windows).
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CallButton_Clicked(object sender, EventArgs e)
+        private async void CallButton_Clicked(object sender, EventArgs e)
         {
             //  TODO: 05 - Add implementation code here.  May need some platform specific help (hint, hint)
-            throw new NotImplementedException();
+            //  First, let's try to trigger a dialog message.  If they respond correctly, dial.
+            if (await DisplayAlert("Dial A Number", $"Would you like to call {TranslatedNumber}?","Yes","No"))
+            {
+                //  TODO: Dial!  (This will be the platform-specific implementation call)
+                //  To aid in this process, we are going to use Dependency injection to implement the interface that is
+                //  specific to the platform that is running this code.
+                //  DI will located the correct interface for us magically, but only if the classes have been tagged
+                //  correctly.
+                var dialer = DependencyService.Get<IDialer>();
+                if (dialer != null)
+                {
+                    dialer.Dial(TranslatedNumber);
+                }
+            }
+
+            
         }
 
 
